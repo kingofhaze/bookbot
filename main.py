@@ -1,7 +1,22 @@
 from stats import get_book_text, get_book_word_count, get_book_character_count, get_book_character_count_sorted
+import sys
+import os
 
 def main():
-    book = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    if not sys.argv[1].endswith('.txt'):
+        print("Error: The file must be a .txt file")
+        sys.exit(1)
+
+    book = sys.argv[1]
+
+    if not os.path.isfile(book):
+        print(f"Error: The file {book} does not exist")
+        sys.exit(1)
+
     text = get_book_text(book)
 
     print("============ BOOKBOT ============")
