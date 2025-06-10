@@ -20,5 +20,14 @@ def get_book_character_count(text):
 
     return char_count   
 
-def get_book_character_count_sorted(text):
-    char_count = sorted(get_book_character_count(text))
+def get_book_character_count_sorted(counts):
+    list_counts = []
+
+    # Oragnize the characters as list of dictionaries name, count
+    for char in counts:
+        list_counts.append({'char': char, 'num': counts[char]})
+    
+    # Sort the list by count
+    list_counts.sort(key=lambda x: x['num'], reverse=True)
+
+    return list_counts
